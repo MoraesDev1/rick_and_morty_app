@@ -1,16 +1,68 @@
-# rick_and_morty_app
+# 🛸 Rick and Morty App
 
-A new Flutter project.
+Um aplicativo Flutter que explora o universo de Rick and Morty usando a [Rick and Morty API](https://rickandmortyapi.com/).
 
-## Getting Started
+## 📱 Sobre o App
 
-This project is a starting point for a Flutter application.
+Este aplicativo permite aos fãs da série explorar informações detalhadas sobre:
+- **Personagens** - Descubra todos os personagens da série com detalhes completos
+- **Episódios** - Browse através de todos os episódios das temporadas
+- **Localizações** - Explore as diferentes dimensões e planetas visitados
 
-A few resources to get you started if this is your first Flutter project:
+## ✨ Funcionalidades
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- 🔍 Busca de personagens por nome
+- 📊 Listagem completa de personagens, episódios e localizações
+- 💫 Interface responsiva e intuitiva
+- 🎨 Design inspirado no visual da série
+- 📱 Compatível com Android e iOS
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🚀 Como Executar
+
+### Pré-requisitos
+- Flutter SDK instalado
+- Android Studio ou VS Code
+- Emulador ou dispositivo físico
+
+### Instalação
+```bash
+# Clone o repositório
+git clone https://github.com/seu-usuario/rick_and_morty_app.git
+
+# Entre no diretório
+cd rick_and_morty_app
+
+# Instale as dependências
+flutter pub get
+
+# Execute o app
+flutter run
+```
+
+## 🛠️ Tecnologias Utilizadas
+
+- **Flutter** - Framework principal
+- **Dart** - Linguagem de programação
+- **HTTP** - Para consumo da API
+- **Provider/Bloc** - Gerenciamento de estado
+- **Cached Network Image** - Cache de imagens
+
+## 🌐 API
+
+Este app consome dados da [Rick and Morty API](https://rickandmortyapi.com/), uma API REST gratuita e aberta.
+
+## 📸 Screenshots
+
+*Em breve...*
+
+## 🤝 Contribuição
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull requests.
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+*Wubba lubba dub dub!* 🧪
