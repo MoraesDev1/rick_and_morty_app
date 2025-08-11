@@ -43,6 +43,7 @@ class AppStrings {
   static const String places = 'Locais';
   static const String episodes = 'Episódios';
   static const String settings = 'Configurações';
+  static const String aboutMe = 'Sobre o App';
   static const String logout = 'Sair do App';
 
   // Character Details

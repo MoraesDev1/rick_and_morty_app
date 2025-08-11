@@ -65,7 +65,7 @@ class AppDrawer extends StatelessWidget {
                   onTap: () {
                     Navigator.pushNamedAndRemoveUntil(
                       context,
-                      AppNamedRoutes.building.route,
+                      AppNamedRoutes.characters.route,
                       (route) => false,
                     );
                   },
@@ -76,7 +76,7 @@ class AppDrawer extends StatelessWidget {
                   onTap: () {
                     Navigator.pushNamedAndRemoveUntil(
                       context,
-                      AppNamedRoutes.building.route,
+                      AppNamedRoutes.locations.route,
                       (route) => false,
                     );
                   },
@@ -87,7 +87,18 @@ class AppDrawer extends StatelessWidget {
                   onTap: () {
                     Navigator.pushNamedAndRemoveUntil(
                       context,
-                      AppNamedRoutes.building.route,
+                      AppNamedRoutes.episodes.route,
+                      (route) => false,
+                    );
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.account_circle),
+                  title: Text(AppStrings.aboutMe),
+                  onTap: () {
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      AppNamedRoutes.aboutMe.route,
                       (route) => false,
                     );
                   },
@@ -98,7 +109,7 @@ class AppDrawer extends StatelessWidget {
                   onTap: () {
                     Navigator.pushNamedAndRemoveUntil(
                       context,
-                      AppNamedRoutes.building.route,
+                      AppNamedRoutes.settings.route,
                       (route) => false,
                     );
                   },
