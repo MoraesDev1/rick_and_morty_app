@@ -36,6 +36,8 @@ class AppStrings {
 
   //Buttons
   static const String seeDetails = 'Ver Detalhes';
+  static const String seeAll = 'Ver Todos';
+  static const String seeLess = 'Ver Menos';
 
   // Drawer Options
   static const String home = 'Inicio';
@@ -54,6 +56,7 @@ class AppStrings {
   static const String origin = 'Origem';
   static const String currentLocation = 'Localização Atual';
   static const String technicalInfo = 'Informações Técnicas';
+  static const String basicInfo = 'Informações Básicas';
   static const String creationDate = 'Data de Criação';
   static const String status = 'Status';
 }
