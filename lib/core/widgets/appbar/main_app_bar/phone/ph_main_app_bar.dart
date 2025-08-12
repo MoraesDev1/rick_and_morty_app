@@ -18,7 +18,6 @@ class PhMainAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: Text(title),
-      centerTitle: true,
       automaticallyImplyLeading: automaticallyImplyLeading,
       leading: automaticallyImplyLeading
           ? Builder(
@@ -31,7 +30,6 @@ class PhMainAppBar extends StatelessWidget {
           : null,
       actions: actions,
       bottom: bottom,
-      elevation: Theme.of(context).appBarTheme.elevation,
     );
   }
 }
