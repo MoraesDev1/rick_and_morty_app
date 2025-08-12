@@ -4,11 +4,13 @@ class CharacterDetailUiState {
   final bool isLoading;
   final String errorMessage;
   final CharacterEntity character;
+  final bool showAllEpisodes;
   
   CharacterDetailUiState({
     required this.isLoading,
     required this.errorMessage,
     required this.character,
+    required this.showAllEpisodes,
   });
 
   factory CharacterDetailUiState.initial() {
@@ -16,18 +18,25 @@ class CharacterDetailUiState {
       isLoading: false,
       errorMessage: '',
       character: CharacterEntity.fromMap({}),
+      showAllEpisodes: false,
     );
+  }
+
+  List<String> get episodeListSummary {
+    return character.episode.take(10).toList();
   }
 
   CharacterDetailUiState copyWith({
     bool? isLoading,
     String? errorMessage,
     CharacterEntity? character,
+    bool? showAllEpisodes,
   }) {
     return CharacterDetailUiState(
       isLoading: isLoading ?? this.isLoading,
       errorMessage: errorMessage ?? this.errorMessage,
       character: character ?? this.character,
+      showAllEpisodes: showAllEpisodes ?? this.showAllEpisodes,
     );
   }
 }
