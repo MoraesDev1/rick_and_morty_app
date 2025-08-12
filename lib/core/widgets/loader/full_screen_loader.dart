@@ -83,6 +83,11 @@ class _FullScreenLoaderState extends State<FullScreenLoader>
                 AssetsPaths.loader.path,
                 width: 120,
                 height: 120,
+                errorBuilder: (context, error, stackTrace) => const SizedBox(
+                  width: 120,
+                  height: 120,
+                  child: Center(child: CircularProgressIndicator()),
+                ),
               ),
             ),
             const SizedBox(height: 24),
