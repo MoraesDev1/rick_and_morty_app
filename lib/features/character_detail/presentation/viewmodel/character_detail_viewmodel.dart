@@ -36,4 +36,8 @@ class CharacterDetailViewModel extends ValueNotifier<CharacterDetailUiState>{
   void clearErrorMessage() {
     value = value.copyWith(errorMessage: '');
   }
+
+  void changeShowAllEpisodes() {
+    value = value.copyWith(showAllEpisodes: !value.showAllEpisodes);
+  }
 }
