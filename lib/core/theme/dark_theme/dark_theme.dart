@@ -15,12 +15,14 @@ class DarkTheme {
       onError: DarkColors.textPrimary,
     ),
     appBarTheme: AppBarTheme(
-      backgroundColor: DarkColors.tertiary,
+      backgroundColor: DarkColors.secondary,
       titleTextStyle: TextStyle(
         color: DarkColors.textPrimary,
         fontSize: 20,
         fontWeight: FontWeight.bold,
       ),
+      centerTitle: true,
+      surfaceTintColor: DarkColors.secondary,
     ),
     cardTheme: CardThemeData(
       color: DarkColors.tertiary.withAlpha(180),
