@@ -33,8 +33,8 @@ class DarkTheme {
     ),
     textTheme: TextTheme(
       bodyLarge: TextStyle(color: DarkColors.textPrimary),
-      bodyMedium: TextStyle(color: DarkColors.textSecondary),
-      bodySmall: TextStyle(color: DarkColors.textSecondary),
+      bodyMedium: TextStyle(color: DarkColors.textPrimary),
+      bodySmall: TextStyle(color: DarkColors.textPrimary),
       headlineLarge: TextStyle(color: DarkColors.textPrimary, fontSize: 32, fontWeight: FontWeight.bold),
       headlineMedium: TextStyle(color: DarkColors.textPrimary, fontSize: 24, fontWeight: FontWeight.bold),
       headlineSmall: TextStyle(color: DarkColors.textPrimary, fontSize: 18, fontWeight: FontWeight.bold),
