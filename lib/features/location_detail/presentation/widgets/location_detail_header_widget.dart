@@ -22,6 +22,11 @@ class LocationDetailHeaderWidget extends StatelessWidget {
             child: Image(
               image: NetworkImage(UrlMocks.locationDefault),
               fit: BoxFit.cover,
+              loadingBuilder: (context, child, loadingProgress) => loadingProgress == null
+              ? child
+              : const Center(
+                  child: CircularProgressIndicator(),
+                ),
             ),
           ),
         ),

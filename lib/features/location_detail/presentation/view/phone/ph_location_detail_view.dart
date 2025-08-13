@@ -80,8 +80,8 @@ class PhLocationDetailView extends StatelessWidget {
                                     spacing: 8,
                                     children: value.residents.map((resident) {
                                       return SizedBox(
-                                        width: 120,
-                                        height: 120,
+                                        width: MediaQuery.of(context).size.width * 0.24,
+                                        height: MediaQuery.of(context).size.width * 0.24,
                                         child: Stack(
                                           children: [
                                             Positioned.fill(
@@ -90,6 +90,11 @@ class PhLocationDetailView extends StatelessWidget {
                                                 child: Image(
                                                   image: NetworkImage(resident.image), 
                                                   fit: BoxFit.cover,
+                                                  loadingBuilder: (context, child, loadingProgress) => loadingProgress == null
+                                                    ? child
+                                                    : const Center(
+                                                        child: CircularProgressIndicator(),
+                                                      ),
                                                 ),
                                               ),
                                             ),

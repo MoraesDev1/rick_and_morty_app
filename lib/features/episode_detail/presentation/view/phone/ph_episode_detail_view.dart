@@ -80,8 +80,8 @@ class PhEpisodeDetailView extends StatelessWidget {
                                     spacing: 8,
                                     children: value.characters.map((character) {
                                       return SizedBox(
-                                        width: 120,
-                                        height: 120,
+                                        width: MediaQuery.of(context).size.width * 0.24,
+                                        height: MediaQuery.of(context).size.width * 0.24,
                                         child: Stack(
                                           children: [
                                             Positioned.fill(
