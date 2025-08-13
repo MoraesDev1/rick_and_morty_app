@@ -98,7 +98,7 @@ class AppDrawer extends StatelessWidget {
                   onTap: () {
                     Navigator.pushNamedAndRemoveUntil(
                       context,
-                      AppNamedRoutes.aboutMe.route,
+                      AppNamedRoutes.building.route,
                       (route) => false,
                     );
                   },
@@ -109,7 +109,7 @@ class AppDrawer extends StatelessWidget {
                   onTap: () {
                     Navigator.pushNamedAndRemoveUntil(
                       context,
-                      AppNamedRoutes.settings.route,
+                      AppNamedRoutes.building.route,
                       (route) => false,
                     );
                   },
