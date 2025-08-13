@@ -1,7 +1,7 @@
 class EpisodeEntity {
   final int id;
   final String name;
-  final DateTime airDate;
+  final String airDate;
   final String episode;
   final List<String> characters;
   final String url;
@@ -22,7 +22,7 @@ class EpisodeEntity {
       return EpisodeEntity(
         id: int.tryParse(map['id'].toString()) ?? 0,
         name: map['name'] ?? '',
-        airDate: DateTime.tryParse(map['air_date'] ?? '') ?? DateTime(9999, 1, 1),
+        airDate: map['air_date'] ?? '',
         episode: map['episode'] ?? '',
         characters: List<String>.from(map['characters'] ?? []),
         url: map['url'] ?? '',
@@ -36,7 +36,7 @@ class EpisodeEntity {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     if (name.isNotEmpty) map['name'] = name;
-    map['air_date'] = airDate.toIso8601String();
+    if (airDate.isNotEmpty) map['air_date'] = airDate;
     if (episode.isNotEmpty) map['episode'] = episode;
     if (characters.isNotEmpty) map['characters'] = characters;
     if (url.isNotEmpty) map['url'] = url;
@@ -47,7 +47,7 @@ class EpisodeEntity {
   EpisodeEntity copyWith({
     int? id,
     String? name,
-    DateTime? airDate,
+    String? airDate,
     String? episode,
     List<String>? characters,
     String? url,
