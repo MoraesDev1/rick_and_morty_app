@@ -21,7 +21,7 @@ class _LocationDetailViewModuleState extends State<LocationDetailViewModule> {
   @override
   void initState() {
     viewModel = getIt.get<LocationDetailViewModel>();
-    viewModel.getLocationById(widget.args.locationId);
+    viewModel.init(widget.args.locationId);
     super.initState();
   }
   @override

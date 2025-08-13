@@ -21,7 +21,7 @@ class _EpisodeDetailViewModuleState extends State<EpisodeDetailViewModule> {
   @override
   void initState() {
     viewModel = getIt.get<EpisodeDetailViewModel>();
-    viewModel.getEpisodeById(widget.args.episodeId);
+    viewModel.init(widget.args.episodeId);
     super.initState();
   }
   @override

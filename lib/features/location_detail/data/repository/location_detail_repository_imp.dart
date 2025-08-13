@@ -1,3 +1,4 @@
+import 'package:rick_and_morty_app/core/entities/character_entity.dart';
 import 'package:rick_and_morty_app/core/entities/location_entity.dart';
 import 'package:rick_and_morty_app/core/error/failure/failure.dart';
 import 'package:rick_and_morty_app/core/error/failure/general_failure.dart';
@@ -24,6 +25,21 @@ class LocationDetailRepositoryImp implements LocationDetailRepository {
       return reject(e);
     } catch (e) {
       return reject(GeneralFailure(error: 'Não foi possível obter os detalhes da localização'));
+    }
+  }
+
+  @override
+  Future<EitherOf<Failure, List<CharacterEntity>>> getResidentsByIds({
+    required List<String> ids,
+  }) async {
+    try {
+      final List<Map<String, dynamic>> response = await _datasource.getResidentsByIds(ids: ids);
+      final List<CharacterEntity> residents = response.map((e) => CharacterEntity.fromMap(e)).toList();
+      return resolve(residents);
+    } on Failure catch (e) {
+      return reject(e);
+    } catch (e) {
+      return reject(GeneralFailure(error: 'Não foi possível obter os residentes da localização'));
     }
   }
 }

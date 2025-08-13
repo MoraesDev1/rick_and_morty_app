@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_app/core/consts/app_strings.dart';
 import 'package:rick_and_morty_app/core/enum/assets_paths.dart';
+import 'package:rick_and_morty_app/core/enum/named_routes.dart';
+import 'package:rick_and_morty_app/core/utils/extensions/string_extensions.dart';
 import 'package:rick_and_morty_app/core/widgets/alerts/generic_alert_widget.dart';
 import 'package:rick_and_morty_app/core/widgets/appbar/arrow_back_app_bar/phone/ph_arrow_back_app_bar.dart';
 import 'package:rick_and_morty_app/core/widgets/loader/full_screen_loader.dart';
@@ -10,6 +12,8 @@ import 'package:rick_and_morty_app/features/character_detail/presentation/widget
 import 'package:rick_and_morty_app/features/character_detail/presentation/widgets/episode_chip_widget.dart';
 import 'package:rick_and_morty_app/features/character_detail/presentation/widgets/info_card_widget.dart';
 import 'package:rick_and_morty_app/features/character_detail/presentation/widgets/info_row_widget.dart';
+import 'package:rick_and_morty_app/features/episode_detail/presentation/arguments/episode_detail_arguments.dart';
+import 'package:rick_and_morty_app/features/location_detail/presentation/arguments/location_detail_arguments.dart';
 
 class PhCharacterDetailView extends StatelessWidget {
   final CharacterDetailViewModel characterDetailViewModel;
@@ -87,13 +91,25 @@ class PhCharacterDetailView extends StatelessWidget {
                                   label: AppStrings.origin,
                                   value: value.character.origin.name,
                                   iconPath: AssetsPaths.originIcon.path,
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                      context, 
+                                      AppNamedRoutes.locationsDetail.route,
+                                      arguments: LocationDetailArguments(locationId: int.tryParse(value.character.origin.url.getIdByUrl()) ?? 0),
+                                    );
+                                  },
                                 ),
                                 InfoRowWidget(
                                   label: AppStrings.currentLocation,
                                   value: value.character.location.name,
                                   iconPath: AssetsPaths.currentLocationIcon.path,
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                      context, 
+                                      AppNamedRoutes.locationsDetail.route,
+                                      arguments: LocationDetailArguments(locationId: int.tryParse(value.character.location.url.getIdByUrl()) ?? 0),
+                                    );
+                                  },
                                 ),
                               ],
                             ),
@@ -155,7 +171,13 @@ class PhCharacterDetailView extends StatelessWidget {
                                     : value.episodeListSummary
                                     ).map((episode) => EpisodeChipWidget(
                                       episode: episode, 
-                                      onTap: () {},//TODO: Implement episode detail navigation
+                                      onTap: () {
+                                        Navigator.pushNamed(
+                                          context, 
+                                          AppNamedRoutes.episodesDetail.route,
+                                          arguments: EpisodeDetailArguments(episodeId: int.tryParse(episode.getIdByUrl()) ?? 0),
+                                        );
+                                      },
                                     )).toList(),
                                   ),
                                 ),

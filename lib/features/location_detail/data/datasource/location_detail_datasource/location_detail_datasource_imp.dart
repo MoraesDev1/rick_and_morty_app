@@ -25,4 +25,21 @@ class LocationDetailDatasourceImp implements LocationDetailDatasource {
       rethrow;
     }
   }
+
+  @override
+  Future<List<Map<String, dynamic>>> getResidentsByIds({
+    required List<String> ids,
+  }) async {
+    try {
+      final String url = '${ApiEndpoint.characters.path}${ids.join(',')},';
+      final ResponseEntity<dynamic> response = await _clientHttp.get(url);
+      
+      if (response.statusCode == 200) {
+        return List<Map<String, dynamic>>.from(response.body);
+      }
+      throw HandlerErrorHttp.handler(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
