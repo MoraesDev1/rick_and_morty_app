@@ -59,4 +59,16 @@ class AppStrings {
   static const String basicInfo = 'Informações Básicas';
   static const String creationDate = 'Data de Criação';
   static const String status = 'Status';
+
+  // Location Details
+  static const String dimension = 'Dimensão';
+  static const String residents = 'Residentes';
+  static const String noResidents = 'Nenhum residente encontrado';
+  static const String locationNotFound = 'Localização não encontrada';
+
+  // Episode Details
+  static const String airDate = 'Data de Exibição';
+  static const String episode = 'Episódio';
+  static const String episodeNotFound = 'Episódio não encontrado';
+  static const String charactersNotFound = 'Personagens não encontrado';
 }
