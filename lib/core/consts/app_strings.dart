@@ -9,6 +9,8 @@ class AppStrings {
   static const String details = 'Detalhes';
   static const String notFound = 'Não encontrado';
   static const String building = 'Construindo...';
+  static const String wanted = 'Procurados';
+  static const String topLocations = 'Locais Mais Visitados';
 
   // Loading messages
   static const String loadingMessage1 = 'A existência é uma dor... e esperar carregar também.';

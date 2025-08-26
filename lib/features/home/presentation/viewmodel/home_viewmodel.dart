@@ -19,7 +19,6 @@ class HomeViewModel extends ValueNotifier<HomeUiState>{
   }
 
   Future<void> getAllCharacters() async {
-    changeLoading(true);
     await Future.delayed(const Duration(seconds: 2));
     final EitherOf<Failure, List<CharacterEntity>> result = await _getAllCharactersUsecase();
     result.get(
@@ -30,6 +29,11 @@ class HomeViewModel extends ValueNotifier<HomeUiState>{
         charactersList: resolve,
       ),
     );
+  }
+
+  Future<void> init() async {
+    changeLoading(true);
+    await getAllCharacters();
     changeLoading(false);
   }
 

@@ -14,6 +14,7 @@ class DioClientHttpImp implements ClientHttp {
       baseUrl: baseUrl,
       connectTimeout: Duration(seconds: 10),
       receiveTimeout: Duration(seconds: 10),
+      followRedirects: true,
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',

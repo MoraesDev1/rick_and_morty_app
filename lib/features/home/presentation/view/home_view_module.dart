@@ -18,6 +18,7 @@ class _HomeViewModuleState extends State<HomeViewModule> {
   @override
   void initState() {
     homeViewModel = getIt.get<HomeViewModel>();
+    homeViewModel.init();
     super.initState();
   }
   @override

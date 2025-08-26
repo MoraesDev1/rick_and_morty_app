@@ -9,6 +9,7 @@ class DarkTheme {
     colorScheme: ColorScheme.dark(
       primary: DarkColors.primary,
       secondary: DarkColors.secondary,
+      tertiary: DarkColors.tertiary,
       error: DarkColors.error,
       onPrimary: DarkColors.textPrimary,
       onSecondary: DarkColors.textSecondary,

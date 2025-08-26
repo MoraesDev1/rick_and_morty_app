@@ -5,7 +5,7 @@ import 'package:rick_and_morty_app/core/widgets/appbar/main_app_bar/phone/ph_mai
 import 'package:rick_and_morty_app/core/widgets/loader/full_screen_loader.dart';
 import 'package:rick_and_morty_app/features/character_detail/presentation/arguments/character_detail_arguments.dart';
 import 'package:rick_and_morty_app/features/characters/presentation/viewmodel/characters_viewmodel.dart';
-import 'package:rick_and_morty_app/features/home/presentation/widgets/character_card_widget.dart';
+import 'package:rick_and_morty_app/features/characters/presentation/widgets/character_card_widget.dart';
 
 class PhCharactersView extends StatelessWidget {
   final CharactersViewModel viewModel;
