@@ -48,7 +48,7 @@ class PhLocationDetailView extends StatelessWidget {
                         ),
                         Card(
                           child: Padding(
-                            padding: EdgeInsetsGeometry.all(12),
+                            padding: EdgeInsets.all(12),
                             child: Column(
                               spacing: 12,
                               children: [
