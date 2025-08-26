@@ -24,7 +24,7 @@ class EpisodeDetailRepositoryImp implements EpisodeDetailRepository {
     } on Failure catch (e) {
       return reject(e);
     } catch (e) {
-      return reject(GeneralFailure(error: 'Não foi possível obter os detalhes do personagem'));
+      return reject(GeneralFailure(error: 'Não foi possível obter os detalhes do episódio'));
     }
   }
 
