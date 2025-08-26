@@ -6,7 +6,7 @@ class TaCharactersView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('Home View - Tablet'),
+      child: Text('Characters View - Tablet'),
     );
   }
 }
