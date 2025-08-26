@@ -17,7 +17,7 @@ class SettingsDatasourceImp implements SettingsDatasource {
       final ResponseEntity<dynamic> response = await _clientHttp.get('');
       if (response.statusCode != null && response.statusCode! >= 200 && response.statusCode! < 300) {
         // Assuming the response data is a Map<String, dynamic>
-        return response.data as Map<String, dynamic>;
+        return response as Map<String, dynamic>;
       } else {
         throw HandlerErrorHttp.handler(response);
       }

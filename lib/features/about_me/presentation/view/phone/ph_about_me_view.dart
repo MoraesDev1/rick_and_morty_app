@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rick_and_morty_app/core/consts/app_strings.dart';
 import 'package:rick_and_morty_app/core/widgets/alerts/generic_alert_widget.dart';
 import 'package:rick_and_morty_app/core/widgets/appbar/main_app_bar/phone/ph_main_app_bar.dart';
 import 'package:rick_and_morty_app/core/widgets/loader/full_screen_loader.dart';
