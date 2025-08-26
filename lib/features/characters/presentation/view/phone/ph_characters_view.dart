@@ -29,7 +29,7 @@ class PhCharactersView extends StatelessWidget {
         });
         return Column(
           children: [
-            PhMainAppBar(title: 'Personagens'),
+            PhMainAppBar(title: AppStrings.characters),
             value.isLoading
             ? const FullScreenLoader()
             : Expanded(
