@@ -6,7 +6,7 @@ class WebCharactersView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('Home View - Web'),
+      child: Text('Characters View - Web'),
     );
   }
 }
