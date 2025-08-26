@@ -9,6 +9,8 @@ class AppStrings {
   static const String details = 'Detalhes';
   static const String notFound = 'Não encontrado';
   static const String building = 'Construindo...';
+  static const String wanted = 'Procurados';
+  static const String topLocations = 'Locais Mais Visitados';
 
   // Loading messages
   static const String loadingMessage1 = 'A existência é uma dor... e esperar carregar também.';
@@ -36,6 +38,8 @@ class AppStrings {
 
   //Buttons
   static const String seeDetails = 'Ver Detalhes';
+  static const String seeAll = 'Ver Todos';
+  static const String seeLess = 'Ver Menos';
 
   // Drawer Options
   static const String home = 'Inicio';
@@ -43,6 +47,7 @@ class AppStrings {
   static const String places = 'Locais';
   static const String episodes = 'Episódios';
   static const String settings = 'Configurações';
+  static const String aboutMe = 'Sobre o App';
   static const String logout = 'Sair do App';
 
   // Character Details
@@ -53,6 +58,19 @@ class AppStrings {
   static const String origin = 'Origem';
   static const String currentLocation = 'Localização Atual';
   static const String technicalInfo = 'Informações Técnicas';
+  static const String basicInfo = 'Informações Básicas';
   static const String creationDate = 'Data de Criação';
   static const String status = 'Status';
+
+  // Location Details
+  static const String dimension = 'Dimensão';
+  static const String residents = 'Residentes';
+  static const String noResidents = 'Nenhum residente encontrado';
+  static const String locationNotFound = 'Localização não encontrada';
+
+  // Episode Details
+  static const String airDate = 'Data de Exibição';
+  static const String episode = 'Episódio';
+  static const String episodeNotFound = 'Episódio não encontrado';
+  static const String charactersNotFound = 'Personagens não encontrado';
 }

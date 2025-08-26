@@ -34,6 +34,7 @@ class ResponsiveViewWidget extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         drawer: const AppDrawer(),
         body: LayoutBuilder(
           builder: (context, constraints) {

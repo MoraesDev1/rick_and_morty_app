@@ -6,4 +6,11 @@ extension StringExtensions on String {
       return '${word[0].toUpperCase()}${word.substring(1).toLowerCase()}';
     }).join(' ');
   }
+
+  String getIdByUrl() {
+    final parts = split('/');
+    if (parts.isEmpty) return '';
+    final idPart = parts.last;
+    return idPart.isNotEmpty ? idPart : '';
+  }
 }

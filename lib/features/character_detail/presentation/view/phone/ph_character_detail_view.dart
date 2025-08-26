@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_app/core/consts/app_strings.dart';
-import 'package:rick_and_morty_app/core/utils/extensions/datetime_extensons.dart';
+import 'package:rick_and_morty_app/core/enum/assets_paths.dart';
+import 'package:rick_and_morty_app/core/enum/named_routes.dart';
 import 'package:rick_and_morty_app/core/utils/extensions/string_extensions.dart';
 import 'package:rick_and_morty_app/core/widgets/alerts/generic_alert_widget.dart';
 import 'package:rick_and_morty_app/core/widgets/appbar/arrow_back_app_bar/phone/ph_arrow_back_app_bar.dart';
-import 'package:rick_and_morty_app/core/widgets/container/character_status_widget.dart';
 import 'package:rick_and_morty_app/core/widgets/loader/full_screen_loader.dart';
+import 'package:rick_and_morty_app/features/character_detail/presentation/state/character_detail_ui_state.dart';
 import 'package:rick_and_morty_app/features/character_detail/presentation/viewmodel/character_detail_viewmodel.dart';
+import 'package:rick_and_morty_app/features/character_detail/presentation/widgets/basic_character_info_widget.dart';
+import 'package:rick_and_morty_app/features/character_detail/presentation/widgets/episode_chip_widget.dart';
+import 'package:rick_and_morty_app/features/character_detail/presentation/widgets/info_card_widget.dart';
 import 'package:rick_and_morty_app/features/character_detail/presentation/widgets/info_row_widget.dart';
+import 'package:rick_and_morty_app/features/episode_detail/presentation/arguments/episode_detail_arguments.dart';
+import 'package:rick_and_morty_app/features/location_detail/presentation/arguments/location_detail_arguments.dart';
 
 class PhCharacterDetailView extends StatelessWidget {
   final CharacterDetailViewModel characterDetailViewModel;
@@ -18,7 +24,7 @@ class PhCharacterDetailView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: characterDetailViewModel, 
-      builder: (context, value, child) {
+      builder: (context,CharacterDetailUiState value, child) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           if (value.errorMessage.isNotEmpty) {
             showDialog(
@@ -40,144 +46,146 @@ class PhCharacterDetailView extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: SingleChildScrollView(
                     child: Column(
+                      spacing: 16,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(height: 32),
-                        CircleAvatar(
-                          radius: 80,
-                          backgroundImage: NetworkImage(value.character.image),
+                        SizedBox(height: 16),
+                        BasicCharacterInfoWidget(
+                          imageUrl: value.character.image, 
+                          name: value.character.name, 
+                          status: value.character.status,
                         ),
-                        const SizedBox(height: 16),
-                        Text(
-                          value.character.name.toTitleCase(),
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.headlineMedium,
-                        ),
-                        const SizedBox(height: 8),
-                        CharacterStatusWidget(status: value.character.status),
-                        const SizedBox(height: 24),
-                        Card(
-                          elevation: 4,
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Column(
-                              children: [
-                                InfoRowWidget(
-                                  label: AppStrings.species,
-                                  value: value.character.species,
-                                  icon: Icons.pets,
-                                ),
-                                if (value.character.type.isNotEmpty) ...[
-                                  const Divider(height: 24),
-                                  InfoRowWidget(
-                                    label: AppStrings.type,
-                                    value: value.character.type,
-                                    icon: Icons.category,
-                                  ),
-                                ],
-                                const Divider(height: 24),
-                                InfoRowWidget(
-                                  label: AppStrings.gender,
-                                  value: value.character.gender.description,
-                                  icon: Icons.person,
-                                ),
-                              ],
-                            ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.12,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InfoCardWidget(
+                                titleLabel: AppStrings.species,
+                                titleValue: value.character.species,
+                                type: value.character.type,
+                                iconPath: AssetsPaths.speciesIcon.path,
+                              ),
+                              InfoCardWidget(
+                                titleLabel: AppStrings.gender,
+                                titleValue: value.character.gender.description, 
+                                type: '',
+                                iconPath: AssetsPaths.genderIcon.path,
+                              ),
+                            ],
                           ),
                         ),
-                        const SizedBox(height: 16),
                         Card(
                           elevation: 4,
                           child: Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: Column(
+                              spacing: 12,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   AppStrings.locations,
                                   style: Theme.of(context).textTheme.titleMedium,
                                 ),
-                                const SizedBox(height: 12),
                                 InfoRowWidget(
                                   label: AppStrings.origin,
                                   value: value.character.origin.name,
-                                  icon: Icons.home,
+                                  iconPath: AssetsPaths.originIcon.path,
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                      context, 
+                                      AppNamedRoutes.locationsDetail.route,
+                                      arguments: LocationDetailArguments(locationId: int.tryParse(value.character.origin.url.getIdByUrl()) ?? 0),
+                                    );
+                                  },
                                 ),
-                                const Divider(height: 24),
                                 InfoRowWidget(
                                   label: AppStrings.currentLocation,
                                   value: value.character.location.name,
-                                  icon: Icons.location_on,
+                                  iconPath: AssetsPaths.currentLocationIcon.path,
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                      context, 
+                                      AppNamedRoutes.locationsDetail.route,
+                                      arguments: LocationDetailArguments(locationId: int.tryParse(value.character.location.url.getIdByUrl()) ?? 0),
+                                    );
+                                  },
                                 ),
                               ],
                             ),
                           ),
                         ),
-                        const SizedBox(height: 16),
                         Card(
                           elevation: 4,
                           child: Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Row(
+                                  spacing: 8,
                                   children: [
                                     const Icon(Icons.tv),
-                                    const SizedBox(width: 8),
                                     Text(
                                       '${AppStrings.episodes} (${value.character.episode.length})',
                                       style: Theme.of(context).textTheme.titleMedium,
                                     ),
+                                    if (value.character.episode.length > 10) Expanded(
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          OutlinedButton(
+                                            onPressed: characterDetailViewModel.changeShowAllEpisodes,
+                                            style: ButtonStyle(
+                                              shape: WidgetStateProperty.all(
+                                                RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.circular(8),
+                                                ),
+                                              ),
+                                              side: WidgetStateProperty.all(
+                                                BorderSide(color: Theme.of(context).colorScheme.primary),
+                                              ),
+                                            ),
+                                            child: Text(
+                                              value.showAllEpisodes ? AppStrings.seeLess : AppStrings.seeAll, 
+                                              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                                color: Theme.of(context).colorScheme.primary,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ],
                                 ),
                                 const SizedBox(height: 12),
-                                Wrap(
-                                  spacing: 8,
-                                  runSpacing: 8,
-                                  children: value.character.episode.take(10).map((episode) {
-                                    final episodeNumber = episode.split('/').last;
-                                    return Chip(
-                                      label: Text('Ep $episodeNumber'),
-                                      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-                                    );
-                                  }).toList(),
-                                ),
-                                if (value.character.episode.length > 10)
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 8),
-                                    child: Text(
-                                      '+ ${value.character.episode.length - 10} ${AppStrings.episodes}',
-                                      style: Theme.of(context).textTheme.bodySmall,
-                                    ),
+                                AnimatedSize(
+                                  duration: const Duration(milliseconds: 800),
+                                  curve: Curves.easeIn,
+                                  alignment: Alignment.topCenter,
+                                  child: Wrap(
+                                    spacing: 8,
+                                    runSpacing: 8,
+                                    children: (value.showAllEpisodes
+                                    ? value.character.episode
+                                    : value.episodeListSummary
+                                    ).map((episode) => EpisodeChipWidget(
+                                      episode: episode, 
+                                      onTap: () {
+                                        Navigator.pushNamed(
+                                          context, 
+                                          AppNamedRoutes.episodesDetail.route,
+                                          arguments: EpisodeDetailArguments(episodeId: int.tryParse(episode.getIdByUrl()) ?? 0),
+                                        );
+                                      },
+                                    )).toList(),
                                   ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 16),
-                        Card(
-                          elevation: 4,
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  AppStrings.technicalInfo,
-                                  style: Theme.of(context).textTheme.titleMedium,
-                                ),
-                                const SizedBox(height: 12),
-                                InfoRowWidget(
-                                  label: AppStrings.creationDate,
-                                  value: value.character.created.formatDate(),
-                                  icon: Icons.calendar_today,
                                 ),
                               ],
                             ),
                           ),
                         ),
-                        SizedBox(height: 32),
+                        SizedBox(height: 16),
                       ],
                     ),
                   ),

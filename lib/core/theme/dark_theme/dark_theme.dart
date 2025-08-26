@@ -9,18 +9,21 @@ class DarkTheme {
     colorScheme: ColorScheme.dark(
       primary: DarkColors.primary,
       secondary: DarkColors.secondary,
+      tertiary: DarkColors.tertiary,
       error: DarkColors.error,
       onPrimary: DarkColors.textPrimary,
       onSecondary: DarkColors.textSecondary,
       onError: DarkColors.textPrimary,
     ),
     appBarTheme: AppBarTheme(
-      backgroundColor: DarkColors.tertiary,
+      backgroundColor: DarkColors.secondary,
       titleTextStyle: TextStyle(
         color: DarkColors.textPrimary,
         fontSize: 20,
         fontWeight: FontWeight.bold,
       ),
+      centerTitle: true,
+      surfaceTintColor: DarkColors.secondary,
     ),
     cardTheme: CardThemeData(
       color: DarkColors.tertiary.withAlpha(180),
@@ -31,8 +34,8 @@ class DarkTheme {
     ),
     textTheme: TextTheme(
       bodyLarge: TextStyle(color: DarkColors.textPrimary),
-      bodyMedium: TextStyle(color: DarkColors.textSecondary),
-      bodySmall: TextStyle(color: DarkColors.textSecondary),
+      bodyMedium: TextStyle(color: DarkColors.textPrimary),
+      bodySmall: TextStyle(color: DarkColors.textPrimary),
       headlineLarge: TextStyle(color: DarkColors.textPrimary, fontSize: 32, fontWeight: FontWeight.bold),
       headlineMedium: TextStyle(color: DarkColors.textPrimary, fontSize: 24, fontWeight: FontWeight.bold),
       headlineSmall: TextStyle(color: DarkColors.textPrimary, fontSize: 18, fontWeight: FontWeight.bold),
