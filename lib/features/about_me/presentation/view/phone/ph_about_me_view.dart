@@ -26,7 +26,7 @@ class PhAboutMeView extends StatelessWidget {
         });
         return Column(
           children: [
-            PhMainAppBar(title: 'Home'),
+            PhMainAppBar(title: AppStrings.aboutMe),
             value.isLoading
             ? const FullScreenLoader()
             : Expanded(
